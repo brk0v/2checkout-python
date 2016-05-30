@@ -37,13 +37,13 @@ class Charge(Twocheckout):
             "<script type=\"text/javascript\">document.getElementById(\"2checkout\").submit();</script>"
 
     @classmethod
-    def direct(cls, params=None, text='Proceed to Checkout'):
+    def direct(cls, params=None, text='Proceed to Checkout', css_class=""):
         if params is None:
             params = dict()
         form = "<form id=\"2checkout\" action=\"" + Charge.checkout_url + "\" method=\"post\">"
         for param in params:
             form = form + "<input type=\"hidden\" name=\"" + param + "\" value=\"" + str(params[param]) + "\" />"
-        return form + "<input type=\"submit\" value=\"" + text + "\" /></form>" + \
+        return form + "<input class=\"" + css_class + "\" type=\"submit\" value=\"" + text + "\" /></form>" + \
             "<script src=\"https://www.2checkout.com/static/checkout/javascript/direct.min.js\"></script>"
 
     @classmethod
